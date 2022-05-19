@@ -2,10 +2,10 @@
 terraform {
   required_version = ">=0.12.13"
   backend "s3" {
-    bucket         = "kyler-github-actions-demo-terraform-tfstate"
+    bucket         = "myterraformgithubactions3bucket1234555"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "aws-locks"
+    dynamodb_table = "aws-locks-dynamodb-githubactionskeval"
     encrypt        = true
   }
 }
