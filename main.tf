@@ -30,7 +30,7 @@ module "bootstrap" {
   aws_iam_policy_permits_name = "GitHubActionsIamPolicyPermits"
   aws_iam_policy_assume_name  = "GitHubActionsIamPolicyAssume"
 }
- */
+ 
 
 
 # Build the VPC
@@ -109,7 +109,7 @@ resource "aws_subnet" "my_subnet" {
     Name = "HelloWorld"
   }
 }
-/*
+
 ###################Testing a new instance with keypair 
   
 data "template_file" "startup" {
@@ -157,7 +157,7 @@ create_before_destroy = true
 } #security group ends here
 
 resource "aws_instance" "ec2" {
- ami                    = "ami-0022f774911c1d690"
+ ami                    = "ami-0b418580298265d5c"
  instance_type          = "t2.micro"
  subnet_id              = aws_subnet.my_subnet.id
  vpc_security_group_ids = [aws_security_group.allow_web.id]
