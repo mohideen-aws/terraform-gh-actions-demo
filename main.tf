@@ -98,7 +98,7 @@ resource "aws_subnet" "my_subnet" {
     Name = "HelloWorld"
   }
 }
-*/
+
     
 #Build Instance Linux in VPC1
   resource "aws_instance" "weblinux" {
@@ -109,3 +109,4 @@ resource "aws_subnet" "my_subnet" {
     Name = "HelloWorld"
   }
 }
+*/
