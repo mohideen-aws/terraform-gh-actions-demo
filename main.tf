@@ -113,7 +113,7 @@ resource "aws_subnet" "my_subnet" {
 ###################Testing a new instance with keypair 
   
 data "template_file" "startup" {
-template = file("MyGitHubActionsDemo/ssm-agent-installer.sh")
+template = "./ssm-agent-installer.sh"
 }
 resource "aws_security_group" "allow_web" {
 name        = "webserver"
