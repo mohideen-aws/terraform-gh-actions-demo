@@ -43,6 +43,17 @@ resource "aws_vpc" "vpc" {
     Terraform = "true"
   }
 }
+  
+# Build the VPC2
+resource "aws_vpc" "vpc2" {
+  cidr_block           = "10.2.0.0/16"
+  instance_tenancy     = "default"
+
+  tags = {
+    Name      = "Vpc2"
+    Terraform = "true"
+  }
+}
 
 # Build route table 1
 resource "aws_route_table" "route_table1" {
