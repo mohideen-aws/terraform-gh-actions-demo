@@ -159,7 +159,7 @@ create_before_destroy = true
 resource "aws_instance" "ec2" {
  ami                    = "ami-0022f774911c1d690"
  instance_type          = "t2.micro"
- subnet_id              = my_subnet
+ subnet_id              = aws_subnet.my_subnet.id
  vpc_security_group_ids = [aws_security_group.allow_web.id]
  iam_instance_profile = aws_iam_instance_profile.dev-resources-iam-profile.name 
   
