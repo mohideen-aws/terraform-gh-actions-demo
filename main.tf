@@ -1,6 +1,6 @@
 # Require TF version to be same as or greater than 0.12.13
 terraform {
-  required_version = ">=0.12.13"
+  required_version = "1.1.9"
   backend "s3" {
     bucket         = "myterraformgithubactions3bucket1234555"
     key            = "terraform.tfstate"
