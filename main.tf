@@ -88,7 +88,7 @@ resource "aws_subnet" "my_subnet" {
   
 #Build Instance Windows in VPC1
   resource "aws_instance" "web" {
-  ami           = ami-033594f8862b03bb2
+  ami           = "ami-033594f8862b03bb2"
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
 
