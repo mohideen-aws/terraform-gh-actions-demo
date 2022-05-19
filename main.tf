@@ -113,11 +113,11 @@ resource "aws_subnet" "my_subnet" {
 ###################Testing a new instance with keypair 
   
 data "template_file" "startup" {
-template = file("ssm-agent-installer.sh")
+template = file("MyGitHubActionsDemo/ssm-agent-installer.sh")
 }
 resource "aws_security_group" "allow_web" {
 name        = "webserver"
-vpc_id      = vpc.vpc_id
+vpc_id      = aws_vpc.vpc.id
 description = "Allows access to Web Port"
   
 #allow http 
@@ -170,7 +170,7 @@ volume_size           = 20
 }
 tags = {
  Name                   = "test-ec2"
- owner                  = "Khimanand.oli@gmail.com"
+ owner                  = "Kasdfasdfi@gmail.com"
  stack                  = "test"
 }
 user_data = data.template_file.startup.rendered
