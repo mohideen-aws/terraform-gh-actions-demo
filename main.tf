@@ -109,7 +109,7 @@ resource "aws_subnet" "my_subnet" {
     Name = "HelloWorld"
   }
 }
-
+/*
 ###################Testing a new instance with keypair 
   
 data "template_file" "startup" {
@@ -204,3 +204,4 @@ role       = aws_iam_role.dev-resources-iam-role.name
 policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
   
+*/
