@@ -99,3 +99,13 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 */
+    
+#Build Instance Linux in VPC1
+  resource "aws_instance" "weblinux" {
+  ami           = "ami-0022f774911c1d690"
+  instance_type = "t2.micro"
+  availability_zone = "us-east-1a"
+  tags = {
+    Name = "HelloWorld"
+  }
+}
