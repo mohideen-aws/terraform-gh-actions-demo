@@ -87,7 +87,7 @@ resource "aws_subnet" "my_subnet" {
     Name = "VPC1-Subnet"
   }
 }
-  
+/*  
 #Build Instance Windows in VPC1
   resource "aws_instance" "web" {
   ami           = "ami-033594f8862b03bb2"
@@ -98,3 +98,4 @@ resource "aws_subnet" "my_subnet" {
     Name = "HelloWorld"
   }
 }
+*/
