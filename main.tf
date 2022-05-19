@@ -30,7 +30,7 @@ module "bootstrap" {
   aws_iam_policy_permits_name = "GitHubActionsIamPolicyPermits"
   aws_iam_policy_assume_name  = "GitHubActionsIamPolicyAssume"
 }
- 
+*/ 
 
 
 # Build the VPC
@@ -204,4 +204,3 @@ role       = aws_iam_role.dev-resources-iam-role.name
 policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
   
-*/
