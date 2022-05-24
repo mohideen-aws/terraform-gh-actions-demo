@@ -99,13 +99,71 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 
- */   
+   
 #Build Instance Linux in VPC1
   resource "aws_instance" "ec2-linux" {
-  ami           = "ami-0022f774911c1d690"
+  ami           = "ami-0c321db7d6db74d19"
   instance_type = "t2.micro"
   availability_zone = "eu-west-1a"
   tags = {
     Name = "linux-terraform-demo"
   }
 }
+*/
+#AMI Filter for Windows Server 2019 Base
+
+data "aws_ami" "windows" {
+    most_recent = true
+
+    filter {
+        name   = "name"
+        values = ["Windows_Server-2019-English-Full-Base-*"]
+
+    }
+
+    filter {
+       name   = "virtualization-type"
+       values = ["hvm"]
+    }
+
+    owners = ["801119661308"] # Canonical
+
+}
+
+#AWS Instance
+
+resource "aws_instance" "example" {
+     ami = data.aws_ami.windows.id
+     instance_type = "t2.micro"
+     availability_zone = var.availability_zone
+
+lifecycle {
+     ignore_changes = [ami]
+     }
+}
+
+resource "aws_cloudwatch_metric_alarm" "ec2_cpu" {
+     alarm_name               = "cpu-utilization"
+     comparison_operator       = "GreaterThanOrEqualToThreshold"
+     evaluation_periods       = "2"
+     metric_name               = "CPUUtilization"
+     namespace                 = "AWS/EC2"
+     period                   = "120" #seconds
+     statistic                 = "Average"
+     threshold                 = "80"
+   alarm_description         = "This metric monitors ec2 cpu utilization"
+     insufficient_data_actions = []
+
+dimensions = {
+
+       InstanceId = aws_instance.example.id
+
+     }
+
+}
+
+variable "availability_zone" {
+     type = string
+     default = "eu-west-1a"
+}
+
