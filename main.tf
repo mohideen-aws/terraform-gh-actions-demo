@@ -129,13 +129,37 @@ data "aws_ami" "windows" {
     owners = ["801119661308"] # Canonical
 
 }
+data "template_file" "windows-userdata" {
+  template = <<EOF
+<powershell>
+# Rename Machine
+Rename-Computer -NewName "mytestserver" -Force;
+# Install IIS
+Install-WindowsFeature -name Web-Server -IncludeManagementTools;
+# Restart machine
+shutdown -r -t 10;
+</powershell>
+EOF
+}
 
+# # Create EC2 Instance
+# resource "aws_instance" "windows-server" {
+#   ami                         = data.aws_ami.windows-2019.id
+#   instance_type               = var.windows_instance_type
+#   subnet_id                   = aws_subnet.public-subnet.id
+#   vpc_security_group_ids      = [aws_security_group.aws-windows-sg.id]
+#   associate_public_ip_address = var.windows_associate_public_ip_address
+#   source_dest_check           = false
+#   key_name                    = aws_key_pair.key_pair.key_name
+#   user_data                   = data.template_file.windows-userdata.rendered
 #AWS Instance
 
 resource "aws_instance" "example" {
      ami = data.aws_ami.windows.id
      instance_type = "t2.micro"
      availability_zone = var.availability_zone
+     user_data = data.template_file.windows-userdata.rendered
+     key_name = "mykey"
 
 lifecycle {
      ignore_changes = [ami]
