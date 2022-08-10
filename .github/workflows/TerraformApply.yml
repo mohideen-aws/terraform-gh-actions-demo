@@ -20,7 +20,7 @@ jobs:
     - name: Verify Terraform version
       run: terraform --version
 
-    - - name: Configure AWS credentials from Test account
+    - name: Configure AWS credentials from Test account
       uses: aws-actions/configure-aws-credentials@v1
       with:
         role-to-assume: arn:aws:iam::180902239458:role/OIDC-Role
