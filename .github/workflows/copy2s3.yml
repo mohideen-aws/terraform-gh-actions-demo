@@ -5,7 +5,7 @@ name: Copy2S3
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '45 17  * * *'
+    - cron: '53 17  * * *'
     
 
   # Allows you to run this workflow manually from the Actions tab
