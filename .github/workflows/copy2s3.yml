@@ -35,4 +35,4 @@ jobs:
         var=$(pwd)
         basename $(pwd)
         mydir="$(basename $PWD)"
-        s3://mohi-awsbackup-bucket/github/$mydir
+        aws s3 sync . s3://mohi-awsbackup-bucket/github/$mydir
